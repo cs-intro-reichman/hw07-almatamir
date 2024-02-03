@@ -49,19 +49,16 @@ public class SpellChecker {
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
-		int min = threshold;
-		String s = " ";
+		int min = Integer.MAX_VALUE;
+		String s = word;
 		for (int i = 0; i < dictionary.length; i++)
 		{
-			if (levenshtein(word, dictionary[i]) <= threshold)
-			{
-				if (min >= levenshtein(word, dictionary[i])) 
+			if (min > levenshtein(word, dictionary[i])) 
 				{
 					min = levenshtein(word, dictionary[i]);
 					s = dictionary[i];
 				}
-				
-			}
+	
 		}
 		if (min > threshold)
 		return word;
